@@ -248,10 +248,16 @@ const handleDelete = async (id) => {
                       {(p.cost ?? 0).toFixed(2)} €
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <span className="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 px-2 py-0.5 text-xs font-medium">
-                        {margin(p.price, p.cost)}%
-                      </span>
-                    </td>
+<span
+  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+    Number(margin(p.price, p.cost)) < 0
+      ? "bg-red-100 text-red-600"
+      : "bg-emerald-50 text-emerald-700"
+  }`}
+>
+  {margin(p.price, p.cost)}%
+</span>
+</td>
                     <td className="px-4 py-3 text-right tabular-nums font-medium">
                       {p.points ?? 0}
                     </td>
